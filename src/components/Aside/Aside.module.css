@@ -1,0 +1,51 @@
+.asideContainer {
+    width: 30%;
+    display: block;
+    text-align: center;
+}
+
+.imgCard {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+}
+
+.verticalCard {
+    border: 2px solid #2ecc40;
+    background-color: white;
+    padding: 10px;
+    border-radius: 20px;
+    width: 90%;
+    height: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.verticalCard article {
+    display: flex;
+    margin: 0.8rem;
+}
+
+.verticalCard article p {
+    font-size: 1.1rem;
+    margin: 0 5px;
+    letter-spacing: 0.8px;
+}
+
+.buttonRedirect {
+    height: 3rem;
+    font-size: 1.03rem;
+    cursor: pointer;
+    color: #fff;
+    border-radius: 10px;
+    background-color: #2ecc40;
+    border: 2px solid #3d9970;
+    outline: none;
+}
+
+.buttonRedirect:hover {
+    transition: all 0.5s ease-in-out;
+    background-color: #adffb6;
+}

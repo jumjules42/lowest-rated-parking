@@ -1,4 +1,5 @@
 import React from 'react';
+import getScore from '../../functions/getScore';
 import styles from './Card.module.css';
 
 function Card({ parking }) {
@@ -6,11 +7,6 @@ function Card({ parking }) {
     for (let i = 0; i < parking.rating; i++) {
         ratingStars.push(<i key={`star-${i}`} className='uis uis-star'></i>);
     }
-
-    const getScore = (reviews, rating) => {
-        const score = (reviews * rating) / (reviews + 1);
-        return Number.isInteger(score) ? score : score.toFixed(2);
-    };
 
     const handleClick = () => {
         window.open(parking.url);

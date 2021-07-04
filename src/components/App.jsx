@@ -70,7 +70,7 @@ function App() {
                 </h2>
             </header>
             <main className={styles.mainContent}>
-                <Aside />
+                <Aside parkings={parkings} />
                 <section className={styles.cardsContainer}>
                     <ul className={styles.headerCards}>
                         <li></li>
