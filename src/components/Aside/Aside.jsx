@@ -15,6 +15,11 @@ function Aside({ parkings }) {
         window.open(recommendation.bestParking.url);
     };
 
+    console.log(recommendation, 'reccc');
+
+    if (!recommendation.bestParking.hasOwnProperty('location'))
+        return <h3>Loading...</h3>;
+
     return (
         <aside className={styles.asideContainer}>
             <div className={styles.verticalCard}>
@@ -31,7 +36,7 @@ function Aside({ parkings }) {
                 <article>
                     <p>Address:</p>
                     <p>
-                        {recommendation.bestParking.location.address1},{''}
+                        {recommendation.bestParking.location.address1},{' '}
                         {recommendation.bestParking.location.city}
                     </p>
                 </article>
