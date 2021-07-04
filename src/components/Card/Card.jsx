@@ -4,7 +4,7 @@ import styles from './Card.module.css';
 function Card({ parking }) {
     const ratingStars = [];
     for (let i = 0; i < parking.rating; i++) {
-        ratingStars.push(<i key={`star-${i}`} class='uis uis-star'></i>);
+        ratingStars.push(<i key={`star-${i}`} className='uis uis-star'></i>);
     }
 
     const getScore = (reviews, rating) => {
