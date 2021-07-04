@@ -1,0 +1,35 @@
+.cardContainer {
+    display: flex;
+    width: 60%;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1rem auto;
+    border: 1px solid #000;
+    cursor: pointer;
+    padding: 1rem;
+}
+
+.cardContainer:hover {
+    transform: scale(1.1);
+    transition: all 0.5s linear;
+}
+
+.parkingPic {
+    width: 100px;
+    height: 100px;
+    border-radius: 25px;
+}
+
+.parkingName,
+.parkingPhone,
+.location,
+.score,
+.reviews,
+.starsContainer {
+    width: calc(100% / 7);
+    text-align: center;
+}
+
+.starsContainer i {
+    color: #ffdc00;
+}
