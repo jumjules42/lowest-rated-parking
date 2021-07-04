@@ -29,8 +29,18 @@ function Aside({ parkings }) {
                 />
                 <h3>{recommendation.bestParking.name}</h3>
                 <article>
+                    <p>Address:</p>
+                    <p>
+                        {recommendation.bestParking.location.address1},{''}
+                        {recommendation.bestParking.location.city}
+                    </p>
+                </article>
+                <article>
                     <p>Phone:</p>
-                    <p>{recommendation.bestParking.display_phone}</p>
+                    <p>
+                        {recommendation.bestParking.display_phone ||
+                            'Not Found'}
+                    </p>
                 </article>
                 <article>
                     <p>Score:</p>

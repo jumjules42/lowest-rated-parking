@@ -25,7 +25,7 @@ function Card({ parking }) {
                 <p>{parking.location.city}</p>
             </section>
             <h4 className={styles.parkingPhone}>
-                {parking.phone || 'Not found'}
+                {parking.display_phone || 'Not found'}
             </h4>
             <h4 className={styles.reviews}>{parking.review_count}</h4>
             <h4 className={styles.score}>
