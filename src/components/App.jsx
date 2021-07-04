@@ -57,8 +57,8 @@ function App() {
             {loading && <SpinnerLoad />}
             <header className={styles.header}>
                 <h2>
-                    {`${parkings.length} results found for `}{' '}
-                    <span className={styles.locationName}>{location}</span>{' '}
+                    {`${parkings.length} results found for `}
+                    <span className={styles.locationName}>{location}</span>
                 </h2>
             </header>
             <main className={styles.mainContent}>

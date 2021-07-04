@@ -3,7 +3,7 @@ import styles from './Aside.module.css';
 
 function Aside() {
     return (
-        <aside>
+        <aside className={styles.asideContainer}>
             <p>Soy el aside</p>
         </aside>
     );
