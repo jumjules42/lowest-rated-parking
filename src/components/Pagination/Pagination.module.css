@@ -1,0 +1,38 @@
+.pagination {
+    align-items: center;
+    display: flex;
+    height: 30px;
+    justify-content: center;
+    width: 100%;
+}
+
+.pagination__ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+.pagination__ul li {
+    border: 1px solid #6563ff;
+    margin: 0px;
+    padding: 0.5rem;
+    text-decoration: none;
+    width: 2.5rem;
+    text-align: center;
+}
+
+.activePage {
+    background-color: #6563ff;
+    color: #fff;
+}
+
+.page {
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.page:hover {
+    transition: all ease-in-out 0.3s;
+    background-color: #abaaff;
+    color: #fff;
+}

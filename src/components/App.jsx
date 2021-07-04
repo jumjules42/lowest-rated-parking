@@ -3,56 +3,86 @@ import axios from 'axios';
 import Aside from './Aside/Aside';
 import Searchbar from './Searchbar/Searchbar';
 import SpinnerLoad from './SpinnerLoad/SpinnerLoad';
-import { yelpApiUrl } from '../constants';
+import { yelpApiUrl, perPage } from '../constants';
+import quickSortByRating from '../functions/quickSort';
 import styles from './App.module.css';
 import Card from './Card/Card';
-import Navbar from './Navbar/Navbar';
+import Pagination from './Pagination/Pagination';
 
 function App() {
     const [parkings, setParkings] = useState([]);
     const [location, setLocation] = useState('argentina');
     const [loading, setLoading] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
 
     const getParkings = async () => {
         setLoading(true);
-        const data = await axios.get(yelpApiUrl, {
-            headers: {
-                Authorization: `Bearer ${process.env.REACT_APP_APIKEY}`,
-            },
-            params: {
-                categories: 'parking',
-                sort_by: 'rating',
-                location,
-            },
-        });
-        setParkings(data.data.businesses);
-        setLoading(false);
+        try {
+            const data = await axios.get(yelpApiUrl, {
+                headers: {
+                    Authorization: `Bearer ${process.env.REACT_APP_APIKEY}`,
+                },
+                params: {
+                    categories: 'parking',
+                    sort_by: 'rating',
+                    location,
+                },
+            });
+            const sortedParkings = quickSortByRating(data.data.businesses);
+            setParkings(sortedParkings);
+            setLoading(false);
+        } catch (error) {
+            setLoading(false);
+            setParkings([]);
+        }
     };
-
-    console.log(parkings);
 
     useEffect(() => {
         getParkings();
         //eslint-disable-next-line
     }, [location]);
 
-    if (loading) return <SpinnerLoad />;
+    // This part of code is for pagination
+
+    const indexOfLastParking = currentPage * perPage;
+    const indexOfFirstParking = indexOfLastParking - perPage;
+    const currentParkings = parkings.slice(
+        indexOfFirstParking,
+        indexOfLastParking
+    );
 
     return (
         <div className={styles.container}>
-            <Navbar />
             <Searchbar setLocation={setLocation} />
-            <header>
-                <h2>{`${parkings.length} results found for ${location}`}</h2>
+            {loading && <SpinnerLoad />}
+            <header className={styles.header}>
+                <h2>
+                    {`${parkings.length} results found for `}{' '}
+                    <span className={styles.locationName}>{location}</span>{' '}
+                </h2>
             </header>
-            <main>
+            <main className={styles.mainContent}>
                 <Aside />
-                <section>
-                    {parkings.map((el, idx) => (
+                <section className={styles.cardsContainer}>
+                    <ul className={styles.headerCards}>
+                        <li></li>
+                        <li>Name</li>
+                        <li>Location</li>
+                        <li>Phone Number</li>
+                        <li>Reviews</li>
+                        <li>Score</li>
+                        <li>Calification</li>
+                    </ul>
+                    {currentParkings.map((el, idx) => (
                         <Card parking={el} key={`parking_lot-${idx}`} />
                     ))}
                 </section>
             </main>
+            <Pagination
+                parkings={parkings}
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+            />
         </div>
     );
 }

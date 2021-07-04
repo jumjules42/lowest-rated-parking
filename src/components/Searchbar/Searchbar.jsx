@@ -20,21 +20,38 @@ function Searchbar({ setLocation }) {
         return setError(true);
     };
 
+    const handleClose = () => {
+        setError(false);
+    };
+
     return (
-        <form onSubmit={handleSearch}>
-            <input
-                type='text'
-                placeholder='Location...'
-                onChange={handleChange}
-                value={input}
-            />
-            <input type='submit' value='Search' />
-            {error && (
-                <p className={styles.error}>
-                    The search input must have more than three characters
-                </p>
-            )}
-        </form>
+        <nav className={styles.navbar}>
+            <span className={styles.titleApp}>
+                <i className='uil uil-parking-circle'></i>
+                Lowest Rated Parking Lots
+            </span>
+            <form className={styles.searchbar} onSubmit={handleSearch}>
+                <input
+                    className={styles.inputSearch}
+                    type='text'
+                    placeholder='Location...'
+                    onChange={handleChange}
+                    value={input}
+                />
+                <input
+                    className={styles.buttonSearch}
+                    type='submit'
+                    value='Search'
+                />
+                {error && (
+                    <div className={styles.error}>
+                        <p>The search input must have more than 3 characters</p>
+                        <i onClick={handleClose} class='uil uil-multiply'></i>
+                    </div>
+                )}
+            </form>
+            <q>Made by Julian Vazquez</q>
+        </nav>
     );
 }
 

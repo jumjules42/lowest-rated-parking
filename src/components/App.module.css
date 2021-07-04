@@ -1,0 +1,39 @@
+.header {
+    text-align: center;
+    font-weight: lighter;
+    margin-top: 1rem;
+}
+
+.locationName {
+    text-transform: capitalize;
+}
+
+.mainContent {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 3%;
+}
+
+.cardsContainer {
+    width: 70%;
+}
+
+.headerCards {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0;
+    margin-top: 1rem;
+}
+
+.headerCards li {
+    width: calc(100% / 7);
+    text-align: center;
+}
+
+.headerCards li:first-child {
+    width: 100px;
+}
