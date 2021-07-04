@@ -25,10 +25,15 @@ function Searchbar({ setLocation, setCurrentPage }) {
         setError(false);
     };
 
+    const handleClick = () => {
+        setCurrentPage(1);
+        return setLocation('argentina');
+    };
+
     return (
         <nav className={styles.navbar}>
             <span className={styles.titleApp}>
-                <i className='uil uil-parking-circle'></i>
+                <i className='uil uil-parking-circle' onClick={handleClick}></i>
                 Lowest Rated Parking Lots
             </span>
             <form className={styles.searchbar} onSubmit={handleSearch}>
