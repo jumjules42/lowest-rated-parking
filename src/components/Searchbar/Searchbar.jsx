@@ -46,7 +46,10 @@ function Searchbar({ setLocation }) {
                 {error && (
                     <div className={styles.error}>
                         <p>The search input must have more than 3 characters</p>
-                        <i onClick={handleClose} class='uil uil-multiply'></i>
+                        <i
+                            onClick={handleClose}
+                            className='uil uil-multiply'
+                        ></i>
                     </div>
                 )}
             </form>
