@@ -8,12 +8,14 @@ import quickSortByRating from '../functions/quickSort';
 import styles from './App.module.css';
 import Card from './Card/Card';
 import Pagination from './Pagination/Pagination';
+import ErrorRequest from './ErrorRequest/ErrorRequest';
 
 function App() {
     const [parkings, setParkings] = useState([]);
     const [location, setLocation] = useState('argentina');
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
+    const [errorRequest, setErrorRequest] = useState(false);
 
     const getParkings = async () => {
         setLoading(true);
@@ -33,6 +35,9 @@ function App() {
             setLoading(false);
         } catch (error) {
             setLoading(false);
+            error.toString().includes('429')
+                ? setErrorRequest(true)
+                : setErrorRequest(false);
             setParkings([]);
         }
     };
@@ -53,8 +58,11 @@ function App() {
 
     return (
         <div className={styles.container}>
-            <Searchbar setLocation={setLocation} />
-            {loading && <SpinnerLoad />}
+            <Searchbar
+                setLocation={setLocation}
+                setCurrentPage={setCurrentPage}
+            />
+            {(loading && <SpinnerLoad />) || (errorRequest && <ErrorRequest />)}
             <header className={styles.header}>
                 <h2>
                     {`${parkings.length} results found for `}

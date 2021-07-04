@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './Searchbar.module.css';
 
-function Searchbar({ setLocation }) {
+function Searchbar({ setLocation, setCurrentPage }) {
     const [input, setInput] = useState('');
     const [error, setError] = useState(false);
 
@@ -15,6 +15,7 @@ function Searchbar({ setLocation }) {
         if (input.length >= 3) {
             setError(false);
             setInput('');
+            setCurrentPage(1);
             return setLocation(input);
         }
         return setError(true);
